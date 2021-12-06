@@ -30,6 +30,18 @@ function getWorkingHours(empCheck)
             return 0;
     }
 }
-empHrs=getWorkingHours(empCheck);
-let empWage=empHrs * WAGE_PER_HOUR;
-console.log("UC3-Employee Wage: "+empWage)
+empHrs1=0;
+empHrs1=getWorkingHours(empCheck);
+let empWage1=empHrs1 * WAGE_PER_HOUR;
+console.log("UC3-Employee Wage: "+empWage1)
+
+//UC4-Calculate Wage for a Month
+const NUM_OF_WORKING_DAYS=2;
+let empHrs2=0;
+for(let day=0;day<NUM_OF_WORKING_DAYS;day++)
+{
+    empHrs2 += getWorkingHours(empCheck);
+}
+
+let empWage2=empHrs2 * WAGE_PER_HOUR;
+console.log("UC4-Total Hours: "+empHrs2+" Employee Wage: "+empWage2);

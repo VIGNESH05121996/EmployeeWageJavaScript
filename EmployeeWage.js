@@ -151,3 +151,31 @@ function totalDaysWorked(numOfDays,dailyWage)
 }
 console.log("UC7G-Number of Days Employee Worked: ");
 console.log(empDailyWageArr.reduce(totalDaysWorked,0));
+
+//UC8-Store Daily Wage in Map
+let empHrs4=0;
+const MAX_HRS_IN_MONTH3=160;
+const NUM_OF_WORKING_DAYS4=20;
+let totalEmpHrs3=0;
+let totalWorkingDays3=0;
+let empDailyWageArr1=new Array();
+let empDailyWageMap=new Map();
+
+function calcDailyWage1(empHrs4)
+{
+    return empWage4 * WAGE_PER_HOUR;
+}
+while(totalEmpHrs3 <= MAX_HRS_IN_MONTH3 && totalWorkingDays3 < NUM_OF_WORKING_DAYS4)
+{
+    totalWorkingDays3++;
+    let empHrs4=getWorkingHours(empCheck);
+    totalEmpHrs3 += empHrs4;
+    empDailyWageArr1.push(calcDailyWage1(empHrs4));
+    empDailyWageMap.set(totalWorkingDays3,calcDailyWage1(empHrs4));
+}
+console.log(empDailyWageMap);
+function totalWages1(totalWage1,dailyWage1)
+{
+    return totalWage1 + dailyWage1;
+}
+console.log("UC7A-Employee Wage Map totalHrs: "+Array.from(empDailyWageMap.values()).reduce(totalWages1,0));

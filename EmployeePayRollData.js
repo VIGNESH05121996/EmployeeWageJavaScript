@@ -32,6 +32,9 @@ class EmployeePayrollData
 
 let employeePayrollData=new EmployeePayrollData(1,"Mark",3000);
 console.log(employeePayrollData.toString());
+let newEmployeePayrollData=new EmployeePayrollData(1,"Terrisa",3000,"F",new Date());
+console.log(newEmployeePayrollData.toString());
+//Testing name
 try{
     let nameRegex=RegExp('^[A-Z]{1}[a-z]{3,}$');
     employeePayrollData.names="john";
@@ -45,5 +48,33 @@ catch(e)
 {
     console.error(e);
 }
-let newEmployeePayrollData=new EmployeePayrollData(1,"Terrisa",3000,"F",new Date());
-console.log(newEmployeePayrollData.toString());
+
+//Testing Salary
+try{
+    let salaryRegex=RegExp("^[1-9]{3,}$");
+    employeePayrollData.salary=312456;
+    if(salaryRegex.test(employeePayrollData.salary))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Salary is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}
+
+//Testing Gender
+try{
+    let genderRegex=RegExp("^[M|F]$");
+    employeePayrollData.gender='M';
+    if(genderRegex.test(employeePayrollData.gender))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Gender is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}

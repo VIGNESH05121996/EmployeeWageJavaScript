@@ -7,8 +7,9 @@ class EmployeePayrollData
     salary;
     gender;
     startDate;
+    pincode;
 
-    constructor (id,names,salary,gender,startDate) //constructor
+    constructor (id,names,salary,gender,startDate,pincode) //constructor
      {
         this.id=id;
         this.names=names;
@@ -26,7 +27,7 @@ class EmployeePayrollData
      {
        const options={ year:'numeric',month:'long',day:'numeric'};
        const empDate=this.startDate === undefined ? "undefined" : this.startDate.toLocaleDateString("en-US",options);
-       return "id="+this.id+", name="+this.names+", salary="+this.salary+", gender="+this.gender+", startDate="+this.startDate;
+       return "id="+this.id+", name="+this.names+", salary="+this.salary+", gender="+this.gender+", startDate="+this.startDate+", pincode="+this.pincode;
      }
 }
 
@@ -37,7 +38,7 @@ console.log(newEmployeePayrollData.toString());
 //Testing name
 try{
     let nameRegex=RegExp('^[A-Z]{1}[a-z]{3,}$');
-    employeePayrollData.names="john";
+    employeePayrollData.names="John";
     if(nameRegex.test(employeePayrollData.names))
     {
         console.log(employeePayrollData.toString());
@@ -78,3 +79,49 @@ catch(e)
 {
     console.error(e);
 }
+
+//Testing Pincode UC1-Validate 400088
+try{
+    let pincodeRegex=RegExp("^[0-9]{6}$");
+    employeePayrollData.pincode=400088;
+    if(pincodeRegex.test(employeePayrollData.pincode))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Pincode is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}
+
+//Testing Pincode UC2-Validate A400088 should fail
+try{
+    let pincodeRegex=RegExp("^[0-9]{6}$");
+    employeePayrollData.pincode='A400088';
+    if(pincodeRegex.test(employeePayrollData.pincode))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Pincode is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}
+
+//Testing Pincode UC3-Validate 400088B should fail
+try{
+    let pincodeRegex=RegExp("^[0-9]{6}$");
+    employeePayrollData.pincode='400088B';
+    if(pincodeRegex.test(employeePayrollData.pincode))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Pincode is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}
+

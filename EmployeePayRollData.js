@@ -1,4 +1,5 @@
 //UC12-Create Employee Payroll data with Employeepayroll Class
+var prompt = require('prompt-sync')();
 class EmployeePayrollData
 {
     //properties
@@ -8,14 +9,17 @@ class EmployeePayrollData
     gender;
     startDate;
     pincode;
+    email;
 
-    constructor (id,names,salary,gender,startDate,pincode) //constructor
+    constructor (id,names,salary,gender,startDate,pincode,email) //constructor
      {
         this.id=id;
         this.names=names;
         this.salary=salary;
         this.gender=gender;
         this.startDate=startDate;
+        this.pincode=pincode;
+        this.email=email;
      }
      //getter and setter method 
     get names() { return this._names; }
@@ -27,7 +31,7 @@ class EmployeePayrollData
      {
        const options={ year:'numeric',month:'long',day:'numeric'};
        const empDate=this.startDate === undefined ? "undefined" : this.startDate.toLocaleDateString("en-US",options);
-       return "id="+this.id+", name="+this.names+", salary="+this.salary+", gender="+this.gender+", startDate="+this.startDate+", pincode="+this.pincode;
+       return "id="+this.id+", name="+this.names+", salary="+this.salary+", gender="+this.gender+", startDate="+this.startDate+", pincode="+this.pincode+", email="+this.email;
      }
 }
 
@@ -119,6 +123,21 @@ try{
         console.log(employeePayrollData.toString());
     }
     else throw 'Pincode is incorrect'
+}
+catch(e)
+{
+    console.error(e);
+}
+
+//Testing Valid Email from user input
+try{
+    let emailRegex=RegExp("^[a-zA-Z0-9]+[+-._]?[a-zA-Z0-9]*[+-._]?[a-zA-Z0-9]+@[a-zA-Z0-9]+[.]{1}[a-zA-Z]{2,3}[.]?[a-zA-Z]{0,3}$");
+    employeePayrollData.email=prompt("Enter Email");
+    if(emailRegex.test(employeePayrollData.email))
+    {
+        console.log(employeePayrollData.toString());
+    }
+    else throw 'Email is incorrect'
 }
 catch(e)
 {
